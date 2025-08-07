@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import heroImage from '@/assets/hero-exhaust.jpg';
 import fabricationImage from '@/assets/fabrication.jpg';
-import autocareImage from '@/assets/autocare.jpg';
+import autocareImage from '@/assets/autocare.png';
 
 const Index = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
