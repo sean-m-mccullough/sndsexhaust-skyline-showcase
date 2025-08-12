@@ -20,6 +20,10 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   image,
   reverse = false
 }) => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact-form');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <Card className="overflow-hidden card-shadow hover:shadow-lg smooth-transition">
       <div className={`grid md:grid-cols-2 gap-0 ${reverse ? 'md:flex-row-reverse' : ''}`}>
@@ -53,7 +57,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
             ))}
           </ul>
           
-          <Button variant="outline" className="self-start">
+          <Button variant="outline" className="self-start" onClick={scrollToContact}>
             Learn More
           </Button>
         </CardContent>

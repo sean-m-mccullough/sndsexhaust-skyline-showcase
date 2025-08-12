@@ -43,7 +43,7 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-muted">
+    <section id="contact-form" className="py-20 bg-muted">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Contact Information */}
