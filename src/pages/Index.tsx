@@ -5,6 +5,7 @@ import { ServiceCard } from '@/components/ServiceCard';
 import { ContactForm } from '@/components/ContactForm';
 import { ParallaxSection } from '@/components/ParallaxSection';
 import { CustomerReviews } from '@/components/CustomerReviews';
+import { Navigation } from '@/components/Navigation';
 import { 
   Wrench, 
   Flame, 
@@ -48,11 +49,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Navigation */}
+      <Navigation />
       {/* Hero Section with Parallax */}
       <ParallaxSection 
         backgroundImage={heroImage}
         speed={0.5}
         className="min-h-screen flex items-center justify-center relative"
+        id="hero"
       >
         <div className="absolute inset-0 bg-gradient-overlay"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -84,7 +88,7 @@ const Index = () => {
       </ParallaxSection>
 
       {/* Services Section */}
-      <section ref={scrollRef} className="py-20 bg-background">
+      <section id="services" ref={scrollRef} className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 fade-in-up">
             <h2 className="text-4xl md:text-5xl font-oswald font-bold text-foreground mb-4">
@@ -147,7 +151,7 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-muted">
+      <section id="why-choose-us" className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 fade-in-up">
             <h2 className="text-4xl md:text-5xl font-oswald font-bold text-foreground mb-4">

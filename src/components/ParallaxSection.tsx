@@ -5,13 +5,15 @@ interface ParallaxSectionProps {
   backgroundImage?: string;
   speed?: number;
   className?: string;
+  id?: string;
 }
 
 export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   children,
   backgroundImage,
   speed = 0.5,
-  className = ''
+  className = '',
+  id
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -40,6 +42,7 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
     <div 
       ref={sectionRef}
       className={`parallax-container ${className}`}
+      id={id}
       style={{
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
         backgroundAttachment: 'fixed',
