@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ServiceCard } from '@/components/ServiceCard';
 import { ContactForm } from '@/components/ContactForm';
 import { ParallaxSection } from '@/components/ParallaxSection';
+import { CustomerReviews } from '@/components/CustomerReviews';
 import { 
   Wrench, 
   Flame, 
@@ -193,6 +194,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Customer Reviews Section */}
+      <CustomerReviews />
 
       {/* Contact Form Section */}
       <ContactForm />
