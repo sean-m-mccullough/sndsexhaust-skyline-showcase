@@ -5,6 +5,7 @@ import { ServiceCard } from '@/components/ServiceCard';
 import { ContactForm } from '@/components/ContactForm';
 import { ParallaxSection } from '@/components/ParallaxSection';
 import { CustomerReviews } from '@/components/CustomerReviews';
+import { MediaGallery } from '@/components/MediaGallery';
 import { Navigation } from '@/components/Navigation';
 import { 
   Wrench, 
@@ -198,6 +199,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Media Gallery Section */}
+      <MediaGallery />
 
       {/* Customer Reviews Section */}
       <CustomerReviews />

@@ -10,6 +10,7 @@ const navigationItems = [
   { label: 'Home', href: '#hero' },
   { label: 'Services', href: '#services' },
   { label: 'Why Choose Us', href: '#why-choose-us' },
+  { label: 'Media', href: '#media' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Contact', href: '#contact-form' }
 ];
