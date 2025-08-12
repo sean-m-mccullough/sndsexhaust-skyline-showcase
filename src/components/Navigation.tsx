@@ -73,7 +73,11 @@ export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
           <div className="flex items-center">
             <button
               onClick={() => scrollToSection('#hero')}
-              className="text-xl font-oswald font-bold text-primary hover:text-primary/80 smooth-transition"
+              className={`text-xl font-oswald font-bold smooth-transition ${
+                isScrolled 
+                  ? 'text-primary hover:text-primary/80' 
+                  : 'text-white hover:text-white/90 drop-shadow-lg'
+              }`}
             >
               S&S Stainless Exhaust
             </button>
