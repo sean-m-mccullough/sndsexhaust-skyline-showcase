@@ -88,9 +88,10 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
-      {/* Why Choose Us Section */}
-      <section id="why-choose-us" ref={scrollRef} className="py-20 bg-muted">
+      {/* Services & Why Choose Us Section */}
+      <section id="services" ref={scrollRef} className="py-20 bg-muted">
         <div className="container mx-auto px-4">
+          {/* Why Choose Us */}
           <div className="text-center mb-16 fade-in-up">
             <h2 className="text-4xl md:text-5xl font-oswald font-bold text-foreground mb-4">
               Why Choose S&S Stainless Exhaust?
@@ -101,7 +102,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-20">
             {[
               {
                 icon: Shield,
@@ -134,12 +135,8 @@ const Index = () => {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
+          {/* Our Services */}
           <div className="text-center mb-16 fade-in-up">
             <h2 className="text-4xl md:text-5xl font-oswald font-bold text-foreground mb-4">
               Our Services
