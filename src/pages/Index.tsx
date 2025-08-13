@@ -88,8 +88,57 @@ const Index = () => {
         </div>
       </ParallaxSection>
 
+      {/* Why Choose Us Section */}
+      <section id="why-choose-us" ref={scrollRef} className="py-20 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-oswald font-bold text-foreground mb-4">
+              Why Choose S&S Stainless Exhaust?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Over 20 years of automotive excellence with a commitment to quality craftsmanship 
+              and customer satisfaction.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Shield,
+                title: "Quality Guarantee",
+                description: "All our work comes with a comprehensive warranty and quality guarantee for your peace of mind."
+              },
+              {
+                icon: Award,
+                title: "Expert Craftsmanship",
+                description: "Certified technicians with decades of experience in exhaust systems and automotive repair."
+              },
+              {
+                icon: Users,
+                title: "Customer First",
+                description: "Transparent pricing, honest diagnostics, and exceptional customer service every time."
+              }
+            ].map((item, index) => (
+              <Card key={index} className="text-center p-8 fade-in-up card-shadow hover:shadow-lg smooth-transition">
+                <CardContent className="space-y-4">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto">
+                    <item.icon className="w-8 h-8 text-primary-foreground" />
+                  </div>
+                  <h3 className="text-xl font-oswald font-semibold text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {item.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
-      <section id="services" ref={scrollRef} className="py-20 bg-background">
+      <section id="services" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 fade-in-up">
             <h2 className="text-4xl md:text-5xl font-oswald font-bold text-foreground mb-4">
@@ -147,55 +196,6 @@ const Index = () => {
                 image={autocareImage}
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-oswald font-bold text-foreground mb-4">
-              Why Choose S&S Stainless Exhaust?
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Over 20 years of automotive excellence with a commitment to quality craftsmanship 
-              and customer satisfaction.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Shield,
-                title: "Quality Guarantee",
-                description: "All our work comes with a comprehensive warranty and quality guarantee for your peace of mind."
-              },
-              {
-                icon: Award,
-                title: "Expert Craftsmanship",
-                description: "Certified technicians with decades of experience in exhaust systems and automotive repair."
-              },
-              {
-                icon: Users,
-                title: "Customer First",
-                description: "Transparent pricing, honest diagnostics, and exceptional customer service every time."
-              }
-            ].map((item, index) => (
-              <Card key={index} className="text-center p-8 fade-in-up card-shadow hover:shadow-lg smooth-transition">
-                <CardContent className="space-y-4">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto">
-                    <item.icon className="w-8 h-8 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-xl font-oswald font-semibold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
