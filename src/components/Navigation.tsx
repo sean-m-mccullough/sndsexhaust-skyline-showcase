@@ -154,7 +154,7 @@ export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
                 onClick={() => window.open('tel:+15551234567')}
               >
                 <Phone className="w-4 h-4 mr-2" />
-                Call Now: (555) 123-4567
+                Call Now: (613) 400-7589
               </Button>
             </div>
           </div>

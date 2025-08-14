@@ -17,7 +17,9 @@ import {
   ChevronDown,
   Phone
 } from 'lucide-react';
-import heroImage from '@/assets/hero-exhaust.jpg';
+import heroImage from '@/assets/hero-exhaust2.jpg';
+import blueExhaust from '@/assets/blue-exhaust.jpg';
+import loinRoarExhuast from '@/assets/loin-roar-exhaust.jpg';
 import fabricationImage from '@/assets/fabrication.jpg';
 import autocareImage from '@/assets/autocare.png';
 
@@ -71,7 +73,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button variant="hero" size="lg" className="text-lg px-8 py-4">
                 <Phone className="mr-2" />
-                Call Now: (555) 123-4567
+                Call Now: (613) 400-7589
               </Button>
               <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-primary">
                 Schedule Service
@@ -159,7 +161,7 @@ const Index = () => {
                   "Performance exhaust upgrades"
                 ]}
                 icon={Wrench}
-                image={heroImage}
+                image={blueExhaust}
               />
             </div>
 
@@ -174,7 +176,7 @@ const Index = () => {
                   "One-off and prototype development"
                 ]}
                 icon={Flame}
-                image={fabricationImage}
+                image={loinRoarExhuast}
                 reverse
               />
             </div>
@@ -229,10 +231,10 @@ const Index = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
               <div className="space-y-2 text-primary-foreground/80">
-                <p>123 Industrial Ave</p>
-                <p>Your City, ST 12345</p>
-                <p>(555) 123-4567</p>
-                <p>info@sstainlessexhaust.com</p>
+                <p>2615 Blackwell St unit 112</p>
+                <p>Ottawa, ON K1B4E4</p>
+                <p>(613) 400-7589</p>
+                <p>onlyauthentic@ymail.com</p>
               </div>
             </div>
           </div>

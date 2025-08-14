@@ -65,7 +65,7 @@ export const ContactForm: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">Phone</h3>
-                  <p className="text-muted-foreground">(555) 123-4567</p>
+                  <p className="text-muted-foreground">(613) 400-7589</p>
                 </div>
               </div>
 
@@ -75,7 +75,7 @@ export const ContactForm: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">Email</h3>
-                  <p className="text-muted-foreground">info@sstainlessexhaust.com</p>
+                  <p className="text-muted-foreground">onlyauthentic@ymail.com</p>
                 </div>
               </div>
 
@@ -85,7 +85,7 @@ export const ContactForm: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground">Location</h3>
-                  <p className="text-muted-foreground">123 Industrial Ave, Your City, ST 12345</p>
+                  <p className="text-muted-foreground">2615 Blackwell St unit 112, Ottawa, ON K1B 4E4</p>
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@ export const ContactForm: React.FC = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      placeholder="(555) 123-4567"
+                      placeholder="(613) 400-7589"
                     />
                   </div>
                 </div>
