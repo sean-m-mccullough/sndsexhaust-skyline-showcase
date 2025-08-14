@@ -17,11 +17,9 @@ import {
   ChevronDown,
   Phone
 } from 'lucide-react';
-import heroImage from '@/assets/hero-exhaust2.jpg';
+import heroImage from '@/assets/hero-exhaust3.png';
 import blueExhaust from '@/assets/blue-exhaust.jpg';
 import loinRoarExhuast from '@/assets/loin-roar-exhaust.jpg';
-import fabricationImage from '@/assets/fabrication.jpg';
-import autocareImage from '@/assets/autocare.png';
 
 const Index = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -178,21 +176,6 @@ const Index = () => {
                 icon={Flame}
                 image={loinRoarExhuast}
                 reverse
-              />
-            </div>
-
-            <div className="fade-in-up">
-              <ServiceCard
-                title="Complete Auto Care"
-                description="Comprehensive automotive services to keep your vehicle running at its best. From routine maintenance to complex repairs, our certified technicians provide reliable solutions."
-                features={[
-                  "Oil changes and fluid services",
-                  "Brake system maintenance",
-                  "Engine diagnostics and repair",
-                  "Preventive maintenance programs"
-                ]}
-                icon={Car}
-                image={autocareImage}
               />
             </div>
           </div>
