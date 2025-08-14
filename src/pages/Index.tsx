@@ -17,7 +17,7 @@ import {
   ChevronDown,
   Phone
 } from 'lucide-react';
-import heroImage from '@/assets/hero-exhaust3.png';
+import heroImage from '@/assets/hero-exhaust4.png';
 import blueExhaust from '@/assets/blue-exhaust.jpg';
 import loinRoarExhuast from '@/assets/loin-roar-exhaust.jpg';
 
