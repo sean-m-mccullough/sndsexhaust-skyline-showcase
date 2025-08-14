@@ -92,7 +92,7 @@ export const ContactForm: React.FC = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="card-shadow">
+          {/* <Card className="card-shadow">
             <CardHeader>
               <CardTitle className="text-2xl font-oswald">Schedule Service</CardTitle>
             </CardHeader>
@@ -183,7 +183,7 @@ export const ContactForm: React.FC = () => {
                 </Button>
               </form>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </section>

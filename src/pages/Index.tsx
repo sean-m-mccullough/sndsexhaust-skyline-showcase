@@ -183,7 +183,7 @@ const Index = () => {
       </section>
 
       {/* Media Gallery Section */}
-      <MediaGallery />
+      {/* <MediaGallery /> */}
 
       {/* Customer Reviews Section */}
       <CustomerReviews />

@@ -144,7 +144,7 @@ export const CustomerReviews: React.FC = () => {
         </div>
 
         {/* Google Business Profile CTA */}
-        <div className="text-center mt-12 fade-in-up">
+        {/* <div className="text-center mt-12 fade-in-up">
           <Card className="max-w-md mx-auto p-6 bg-primary/5 border-primary/20">
             <CardContent className="space-y-4">
               <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mx-auto">
@@ -161,7 +161,7 @@ export const CustomerReviews: React.FC = () => {
               </button>
             </CardContent>
           </Card>
-        </div>
+        </div> */}
       </div>
     </section>
   );
