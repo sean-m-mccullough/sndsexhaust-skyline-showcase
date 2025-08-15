@@ -16,23 +16,25 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   id
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current) return;
+      if (!backgroundRef.current || !sectionRef.current) return;
 
       const scrolled = window.pageYOffset;
-      const parallaxElement = sectionRef.current;
-      const elementTop = parallaxElement.offsetTop;
-      const elementHeight = parallaxElement.offsetHeight;
+      const sectionElement = sectionRef.current;
+      const backgroundElement = backgroundRef.current;
+      const elementTop = sectionElement.offsetTop;
+      const elementHeight = sectionElement.offsetHeight;
       const windowHeight = window.innerHeight;
 
-      // Check if element is in viewport with better bounds
-      if (scrolled + windowHeight > elementTop && scrolled < elementTop + elementHeight + windowHeight) {
-        const yPos = -(scrolled - elementTop) * speed;
-        // Use transform3d for better performance and add will-change
-        parallaxElement.style.transform = `translate3d(0, ${yPos}px, 0)`;
-        parallaxElement.style.willChange = 'transform';
+      // Check if element is in viewport
+      if (scrolled + windowHeight > elementTop && scrolled < elementTop + elementHeight) {
+        const yPos = (scrolled - elementTop) * speed;
+        // Only transform the background, not the content
+        backgroundElement.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        backgroundElement.style.willChange = 'transform';
       }
     };
 
@@ -49,8 +51,8 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
     window.addEventListener('scroll', requestTick, { passive: true });
     return () => {
       window.removeEventListener('scroll', requestTick);
-      if (sectionRef.current) {
-        sectionRef.current.style.willChange = 'auto';
+      if (backgroundRef.current) {
+        backgroundRef.current.style.willChange = 'auto';
       }
     };
   }, [speed]);
@@ -58,19 +60,27 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   return (
     <div 
       ref={sectionRef}
-      className={`parallax-container ${className}`}
+      className={`relative overflow-hidden ${className}`}
       id={id}
-      style={{
-        backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
-        backgroundAttachment: 'scroll', // Changed from 'fixed' for better mobile support
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundColor: 'hsl(var(--muted))', // Fallback background color
-        position: 'relative'
-      }}
     >
-      {children}
+      {/* Background layer that moves with parallax */}
+      <div
+        ref={backgroundRef}
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundColor: 'hsl(var(--muted))',
+          transform: 'scale(1.1)', // Scale up to prevent gaps during parallax
+        }}
+      />
+      
+      {/* Content layer that stays in place */}
+      <div className="relative z-10">
+        {children}
+      </div>
     </div>
   );
 };
