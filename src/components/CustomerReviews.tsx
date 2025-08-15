@@ -125,7 +125,7 @@ export const CustomerReviews: React.FC = () => {
                   Share your experience and help others find quality automotive care.
                 </p>
                 <a
-                  href="https://maps.app.goo.gl/ckmFpGPyRVNQZ5617"
+                  href={`https://search.google.com/local/writereview?placeid=ChIJA_EbyGkPzkwR-opFUNWIM8Q`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-primary text-primary-foreground px-6 py-2 rounded-md hover:bg-primary/90 smooth-transition inline-block text-center"
