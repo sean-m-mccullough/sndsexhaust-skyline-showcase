@@ -110,7 +110,7 @@ export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
               variant="hero"
               size="sm"
               className="hidden sm:flex items-center"
-              onClick={() => window.open('tel:+15551234567')}
+              onClick={() => window.open('tel:+16134007589')}
             >
               <Phone className="w-4 h-4 mr-2" />
               Call Now
@@ -151,7 +151,7 @@ export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
                 variant="hero"
                 size="sm"
                 className="w-full sm:hidden flex items-center justify-center"
-                onClick={() => window.open('tel:+15551234567')}
+                onClick={() => window.open('tel:+16134007589')}
               >
                 <Phone className="w-4 h-4 mr-2" />
                 Call Now: (613) 400-7589
