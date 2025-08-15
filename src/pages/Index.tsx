@@ -69,13 +69,28 @@ const Index = () => {
               Professional Exhaust Repair, Custom Fabrication & Complete Auto Care
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button variant="hero" size="lg" className="text-lg px-8 py-4">
-                <Phone className="mr-2" />
-                Call Now: (613) 400-7589
+              <Button
+                asChild
+                variant="hero"
+                size="lg"
+                className="text-lg px-8 py-4"
+              >
+                <a href="tel:6134007589">
+                  <Phone className="mr-2" />
+                  Call Now: (613) 400-7589
+                </a>
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-primary">
-                Schedule Service
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-primary"
+                  onClick={() => {
+                    const contactSection = document.querySelector('#contact-form');
+                    contactSection?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Schedule Service
+                </Button>
             </div>
           </div>
         </div>
@@ -222,7 +237,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
-            <p>&copy; 2024 S&S Stainless Exhaust. All rights reserved.</p>
+            <p>&copy; 2025 S&S Stainless Exhaust. All rights reserved.</p>
           </div>
         </div>
       </footer>
