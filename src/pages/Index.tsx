@@ -112,7 +112,7 @@ const Index = () => {
               Why Choose S&S Stainless Exhaust?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Over 20 years of automotive excellence with a commitment to quality craftsmanship 
+              Over 10 years of automotive excellence with a commitment to quality craftsmanship 
               and customer satisfaction.
             </p>
           </div>
