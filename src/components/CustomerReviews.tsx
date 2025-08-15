@@ -1,66 +1,10 @@
 import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
+import useSWR from 'swr';
 import { Star, Quote } from 'lucide-react';
 
-interface Review {
-  id: number;
-  name: string;
-  rating: number;
-  review: string;
-  service: string;
-  googleProfile?: boolean;
-}
+import { Card, CardContent } from '@/components/ui/card';
+import fetchHelper from '@/functions/fetchHelper';
 
-const reviews: Review[] = [
-  {
-    id: 1,
-    name: "Mike Johnson",
-    rating: 5,
-    review: "Outstanding work on my custom exhaust system! The team at S&S really knows their stuff. Quality craftsmanship and fair pricing. Highly recommend!",
-    service: "Custom Fabrication",
-    googleProfile: true
-  },
-  {
-    id: 2,
-    name: "Sarah Martinez",
-    rating: 5,
-    review: "Quick and professional exhaust repair. They diagnosed the problem immediately and had me back on the road the same day. Great customer service!",
-    service: "Exhaust Repair",
-    googleProfile: true
-  },
-  {
-    id: 3,
-    name: "David Chen",
-    rating: 5,
-    review: "Been bringing my trucks here for years. Reliable, honest, and always does quality work. The stainless steel work is top-notch.",
-    service: "Complete Auto Care",
-    googleProfile: true
-  },
-  {
-    id: 4,
-    name: "Jennifer Wilson",
-    rating: 5,
-    review: "Exceptional service! They went above and beyond to help with my classic car's exhaust system. Attention to detail is amazing.",
-    service: "Custom Fabrication",
-    googleProfile: true
-  },
-  {
-    id: 5,
-    name: "Robert Taylor",
-    rating: 5,
-    review: "Professional team, clean shop, and reasonable prices. My performance exhaust sounds perfect and the installation was flawless.",
-    service: "Exhaust Repair",
-    googleProfile: true
-  },
-  {
-    id: 6,
-    name: "Lisa Anderson",
-    rating: 5,
-    review: "Friendly staff and excellent work quality. They explained everything clearly and finished ahead of schedule. Will definitely return!",
-    service: "Complete Auto Care",
-    googleProfile: true
-  }
-];
 
 const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
   return (
@@ -88,14 +32,39 @@ const GoogleBadge: React.FC = () => (
   </div>
 );
 
+type Review = {
+  author_name: string;
+  rating : number;
+  relative_time_description : string;
+  text : string;
+  time : number;
+}
+
+type ResponseEnvelope<T> = {
+  rating: number;
+  total_ratings: number;
+  reviews: T;
+};
+
+
 export const CustomerReviews: React.FC = () => {
-  const averageRating = reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
-  const totalReviews = reviews.length;
+  const { data, isLoading, error } = useSWR<ResponseEnvelope<Review[]>>('/.netlify/functions/google-reviews', fetchHelper);
+  const averageRating = data?.rating || 0;
+  const totalReviews = data?.total_ratings || 0;
+  
+  if (isLoading) {
+    return <div>Loading reviews...</div>;
+  }
+  
+  if (!data || !data.reviews || data.reviews.length < 1 || error) {
+    console.log('no data');
+    return <div>No reviews available.</div>;
+  }
 
   return (
     <section id="reviews" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 fade-in-up">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-oswald font-bold text-foreground mb-4">
             What Our Customers Say
           </h2>
@@ -117,51 +86,55 @@ export const CustomerReviews: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.map((review, index) => (
-            <Card key={review.id} className="fade-in-up card-shadow hover:shadow-lg smooth-transition">
+          {data.reviews.map((review, index) => (
+            <Card 
+              key={review.time}
+              className="card-shadow hover:shadow-lg smooth-transition"
+            >
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <StarRating rating={review.rating} />
                     <h4 className="font-semibold text-foreground mt-2">
-                      {review.name}
+                      {review.author_name}
                     </h4>
                     <span className="text-sm text-primary font-medium">
-                      {review.service}
+                      {review.relative_time_description}
                     </span>
                   </div>
                   <Quote className="w-6 h-6 text-primary/30" />
                 </div>
                 
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  "{review.review}"
+                  "{review.text}"
                 </p>
                 
-                {review.googleProfile && <GoogleBadge />}
+                <GoogleBadge />
               </CardContent>
             </Card>
           ))}
+            <Card className="max-w-md mx-auto p-6 bg-primary/5 border-primary/20 justify-center items-center align-center flex flex-col">
+              <CardContent className="space-y-4 text-center">
+                <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mx-auto">
+                  <span className="text-white font-bold text-xl">G</span>
+                </div>
+                <h3 className="text-xl font-semibold text-foreground text-center">
+                  Love our service?
+                </h3>
+                <p className="text-muted-foreground text-center">
+                  Share your experience and help others find quality automotive care.
+                </p>
+                <a
+                  href="https://maps.app.goo.gl/ckmFpGPyRVNQZ5617"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-primary text-primary-foreground px-6 py-2 rounded-md hover:bg-primary/90 smooth-transition inline-block text-center"
+                >
+                  Leave a Google Review
+                </a>
+              </CardContent>
+            </Card>
         </div>
-
-        {/* Google Business Profile CTA */}
-        {/* <div className="text-center mt-12 fade-in-up">
-          <Card className="max-w-md mx-auto p-6 bg-primary/5 border-primary/20">
-            <CardContent className="space-y-4">
-              <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-white font-bold text-xl">G</span>
-              </div>
-              <h3 className="text-xl font-semibold text-foreground">
-                Love our service?
-              </h3>
-              <p className="text-muted-foreground">
-                Share your experience and help others find quality automotive care.
-              </p>
-              <button className="bg-primary text-primary-foreground px-6 py-2 rounded-md hover:bg-primary/90 smooth-transition">
-                Leave a Google Review
-              </button>
-            </CardContent>
-          </Card>
-        </div> */}
       </div>
     </section>
   );

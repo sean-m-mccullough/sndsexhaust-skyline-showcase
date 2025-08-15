@@ -9,7 +9,7 @@ interface NavigationProps {
 const navigationItems = [
   { label: 'Home', href: '#hero' },
   { label: 'Services', href: '#services' },
-  { label: 'Media', href: '#media' },
+  // { label: 'Media', href: '#media' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Contact', href: '#contact-form' }
 ];
