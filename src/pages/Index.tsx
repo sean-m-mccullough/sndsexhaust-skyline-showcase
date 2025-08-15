@@ -55,7 +55,7 @@ const Index = () => {
       {/* Hero Section with Parallax */}
       <ParallaxSection 
         backgroundImage={heroImage}
-        speed={0.5}
+        speed={0.2}
         className="min-h-screen flex items-center justify-center relative"
         id="hero"
       >

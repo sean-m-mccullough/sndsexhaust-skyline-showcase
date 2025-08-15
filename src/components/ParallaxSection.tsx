@@ -27,15 +27,32 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
       const elementHeight = parallaxElement.offsetHeight;
       const windowHeight = window.innerHeight;
 
-      // Check if element is in viewport
-      if (scrolled + windowHeight > elementTop && scrolled < elementTop + elementHeight) {
+      // Check if element is in viewport with better bounds
+      if (scrolled + windowHeight > elementTop && scrolled < elementTop + elementHeight + windowHeight) {
         const yPos = -(scrolled - elementTop) * speed;
-        parallaxElement.style.transform = `translateY(${yPos}px)`;
+        // Use transform3d for better performance and add will-change
+        parallaxElement.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        parallaxElement.style.willChange = 'transform';
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const requestTick = () => {
+      if (!ticking) {
+        requestAnimationFrame(handleScroll);
+        ticking = true;
+        setTimeout(() => { ticking = false; }, 16); // ~60fps
+      }
+    };
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', requestTick);
+      if (sectionRef.current) {
+        sectionRef.current.style.willChange = 'auto';
+      }
+    };
   }, [speed]);
 
   return (
@@ -45,10 +62,12 @@ export const ParallaxSection: React.FC<ParallaxSectionProps> = ({
       id={id}
       style={{
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
-        backgroundAttachment: 'fixed',
-        backgroundPosition: 'center',
+        backgroundAttachment: 'scroll', // Changed from 'fixed' for better mobile support
+        backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        backgroundColor: 'hsl(var(--muted))', // Fallback background color
+        position: 'relative'
       }}
     >
       {children}
