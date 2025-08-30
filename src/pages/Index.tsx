@@ -1,16 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ServiceCard } from '@/components/ServiceCard';
 import { ContactForm } from '@/components/ContactForm';
 import { ParallaxSection } from '@/components/ParallaxSection';
 import { CustomerReviews } from '@/components/CustomerReviews';
-import { MediaGallery } from '@/components/MediaGallery';
 import { Navigation } from '@/components/Navigation';
 import { 
   Wrench, 
   Flame, 
-  Car, 
   Shield, 
   Award, 
   Users,
@@ -19,7 +17,11 @@ import {
 } from 'lucide-react';
 import heroImage from '@/assets/hero-exhaust4.png';
 import blueExhaust from '@/assets/blue-exhaust.jpg';
-import loinRoarExhuast from '@/assets/loin-roar-exhaust.jpg';
+import lionRoarExhaust from '@/assets/lion-roar-exhaust.jpg';
+import lionRoarExhaust2 from '@/assets/lion-roar-exhaust2.jpg';
+import lionRoarExhaust3 from '@/assets/lion-roar-exhaust3.jpg';
+import lionRoarExhaust4 from '@/assets/lion-roar-exhaust4.jpg';
+import lionRoarExhaust5 from '@/assets/lion-roar-exhaust5.jpg';
 
 const Index = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -180,7 +182,7 @@ const Index = () => {
 
             <div className="fade-in-up">
               <ServiceCard
-                title="Custom Fabrication"
+                title="Lion Roar Exhausts"
                 description="Expert custom exhaust fabrication tailored to your vehicle's specific needs. Our skilled craftsmen create bespoke solutions for performance vehicles, classic cars, and specialized applications."
                 features={[
                   "Custom exhaust design and fabrication",
@@ -189,7 +191,7 @@ const Index = () => {
                   "One-off and prototype development"
                 ]}
                 icon={Flame}
-                image={loinRoarExhuast}
+                image={[lionRoarExhaust3, lionRoarExhaust2, lionRoarExhaust, lionRoarExhaust4, lionRoarExhaust5]} // Array of images for
                 reverse
               />
             </div>
