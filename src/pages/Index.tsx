@@ -18,10 +18,10 @@ import {
 import heroImage from '@/assets/hero-exhaust4.png';
 import blueExhaust from '@/assets/blue-exhaust.jpg';
 import lionRoarExhaust from '@/assets/lion-roar-exhaust.jpg';
-import lionRoarExhaust2 from '@/assets/lion-roar-exhaust2.jpg';
-import lionRoarExhaust3 from '@/assets/lion-roar-exhaust3.jpg';
-import lionRoarExhaust4 from '@/assets/lion-roar-exhaust4.jpg';
-import lionRoarExhaust5 from '@/assets/lion-roar-exhaust5.jpg';
+import lionRoarExhaust2 from '@/assets/lion-roar-exhaust-2.jpg';
+import lionRoarExhaust3 from '@/assets/lion-roar-exhaust-3.jpg';
+import lionRoarExhaust4 from '@/assets/lion-roar-exhaust-4.jpg';
+import lionRoarExhaust5 from '@/assets/lion-roar-exhaust-5.jpg';
 
 const Index = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
