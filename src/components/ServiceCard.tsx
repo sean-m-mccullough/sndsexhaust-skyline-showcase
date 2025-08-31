@@ -36,7 +36,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
   return (
     <Card className="overflow-hidden card-shadow hover:shadow-lg smooth-transition">
       <div className={`grid md:grid-cols-2 gap-0 ${reverse ? 'md:flex-row-reverse' : ''}`}>
-        <div className={`relative h-64 md:h-auto ${reverse ? 'md:order-2' : ''}`}>
+        <div className={`relative h-64 md:h-80 lg:h-96 ${reverse ? 'md:order-2' : ''}`}>
           {isCarousel ? (
             <div className="embla h-full" ref={emblaRef}>
               <div className="embla__container h-full">
