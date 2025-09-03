@@ -191,7 +191,13 @@ const Index = () => {
                   "One-off and prototype development"
                 ]}
                 icon={Flame}
-                image={[lionRoarExhaust3, lionRoarExhaust2, lionRoarExhaust, lionRoarExhaust4, lionRoarExhaust5]} // Array of images for
+                image={[
+                  lionRoarExhaust3, 
+                  lionRoarExhaust2, 
+                  lionRoarExhaust, 
+                  lionRoarExhaust4, 
+                  lionRoarExhaust5
+                ]} // Array of images for
                 reverse
               />
             </div>

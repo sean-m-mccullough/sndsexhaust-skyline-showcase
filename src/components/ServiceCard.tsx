@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { LucideIcon, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -30,18 +30,23 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
     contactSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollPrev = () => emblaApi?.scrollPrev();
-  const scrollNext = () => emblaApi?.scrollNext();
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   return (
     <Card className="overflow-hidden card-shadow hover:shadow-lg smooth-transition">
       <div className={`grid md:grid-cols-2 gap-0 ${reverse ? 'md:flex-row-reverse' : ''}`}>
-        <div className={`relative h-64 md:h-80 lg:h-96 ${reverse ? 'md:order-2' : ''}`}>
+        <div className={`relative h-80 md:h-96 lg:h-[35rem] ${reverse ? 'md:order-2' : ''}`}>
           {isCarousel ? (
             <div className="embla h-full" ref={emblaRef}>
               <div className="embla__container h-full">
                 {images.map((img, index) => (
-                  <div key={index} className="embla__slide h-full min-w-0 flex-[0_0_100%]">
+                  <div key={index} className="embla__slide h-full">
                     <img
                       src={img}
                       alt={`${title} ${index + 1}`}
@@ -50,20 +55,24 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
                   </div>
                 ))}
               </div>
-              <button
-                onClick={scrollPrev}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-background/80 hover:bg-background flex items-center justify-center transition-colors"
-                aria-label="Previous image"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={scrollNext}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-background/80 hover:bg-background flex items-center justify-center transition-colors"
-                aria-label="Next image"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
+              {isCarousel && (
+                <>
+                  <button
+                    onClick={scrollPrev}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-background/80 hover:bg-background flex items-center justify-center transition-colors shadow-md"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={scrollNext}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-background/80 hover:bg-background flex items-center justify-center transition-colors shadow-md"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </>
+              )}
             </div>
           ) : (
             <img
