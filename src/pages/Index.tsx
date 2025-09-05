@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ServiceCard } from '@/components/ServiceCard';
 import { ContactForm } from '@/components/ContactForm';
+import { MediaGallery } from '@/components/MediaGallery';
 import { ParallaxSection } from '@/components/ParallaxSection';
 import { CustomerReviews } from '@/components/CustomerReviews';
 import { Navigation } from '@/components/Navigation';
@@ -167,21 +168,6 @@ const Index = () => {
           <div className="space-y-16">
             <div className="fade-in-up">
               <ServiceCard
-                title="Exhaust Repair"
-                description="Professional exhaust system repairs using high-quality stainless steel components. We diagnose and fix leaks, replace damaged sections, and restore your vehicle's performance and sound."
-                features={[
-                  "Complete exhaust system diagnostics",
-                  "High-quality stainless steel repairs",
-                  "Muffler and catalytic converter services",
-                  "Performance exhaust upgrades"
-                ]}
-                icon={Wrench}
-                image={blueExhaust}
-              />
-            </div>
-
-            <div className="fade-in-up">
-              <ServiceCard
                 title="Lion Roar Exhausts"
                 description="Expert custom exhaust fabrication tailored to your vehicle's specific needs. Our skilled craftsmen create bespoke solutions for performance vehicles, classic cars, and specialized applications."
                 features={[
@@ -197,7 +183,21 @@ const Index = () => {
                   lionRoarExhaust, 
                   lionRoarExhaust4, 
                   lionRoarExhaust5
-                ]} // Array of images for
+                ]}
+              />
+            </div>
+            <div className="fade-in-up">
+              <ServiceCard
+                title="Exhaust Repair"
+                description="Professional exhaust system repairs using high-quality stainless steel components. We diagnose and fix leaks, replace damaged sections, and restore your vehicle's performance and sound."
+                features={[
+                  "Complete exhaust system diagnostics",
+                  "High-quality stainless steel repairs",
+                  "Muffler and catalytic converter services",
+                  "Performance exhaust upgrades"
+                ]}
+                icon={Wrench}
+                image={blueExhaust}
                 reverse
               />
             </div>
@@ -206,7 +206,7 @@ const Index = () => {
       </section>
 
       {/* Media Gallery Section */}
-      {/* <MediaGallery /> */}
+      <MediaGallery />
 
       {/* Customer Reviews Section */}
       <CustomerReviews />
