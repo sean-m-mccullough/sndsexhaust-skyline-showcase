@@ -2,29 +2,61 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Menu, X } from 'lucide-react';
 
-interface NavigationProps {
-  className?: string;
+interface NavigationItem {
+  label: string;
+  href: string;
+  order: number;
+  isActive: boolean;
 }
 
-const navigationItems = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Services', href: '#services' },
-  { label: 'Media', href: '#media' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'Contact', href: '#contact-form' }
+interface NavigationData {
+  brandName: string;
+  navigationItems: NavigationItem[];
+  phoneNumber: string;
+  phoneDisplayText: string;
+}
+
+interface NavigationProps {
+  className?: string;
+  navigationData?: NavigationData;
+}
+
+const fallbackNavigationItems = [
+  { label: 'Home', href: '#hero', order: 1, isActive: true },
+  { label: 'Services', href: '#services', order: 2, isActive: true },
+  { label: 'Media', href: '#media', order: 3, isActive: true },
+  { label: 'Reviews', href: '#reviews', order: 4, isActive: true },
+  { label: 'Contact', href: '#contact-form', order: 5, isActive: true }
 ];
 
-export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
+export const Navigation: React.FC<NavigationProps> = ({ 
+  className = '', 
+  navigationData 
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+
+  // Use Sanity data or fallback
+  const brandName = navigationData?.brandName || 'S&S Stainless Exhaust';
+  const navigationItems = (
+    (navigationData?.navigationItems && Array.isArray(navigationData.navigationItems)) 
+      ? navigationData.navigationItems 
+      : fallbackNavigationItems
+    )
+    .filter(item => item.isActive)
+    .sort((a, b) => a.order - b.order);
+  const phoneNumber = navigationData?.phoneNumber || '+16134007589';
+  const phoneDisplayText = navigationData?.phoneDisplayText || 'Call Now';
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Update active section based on scroll position
-      const sections = navigationItems.map(item => item.href.substring(1));
+      const sections = Array.isArray(navigationItems) 
+        ? navigationItems.map(item => item.href.substring(1))
+        : fallbackNavigationItems.map(item => item.href.substring(1));
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -79,7 +111,7 @@ export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
                   : 'text-white hover:text-white/90 drop-shadow-lg'
               }`}
             >
-              S&S Stainless Exhaust
+              {brandName}
             </button>
           </div>
 
@@ -110,10 +142,10 @@ export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
               variant="hero"
               size="sm"
               className="hidden sm:flex items-center"
-              onClick={() => window.open('tel:+16134007589')}
+              onClick={() => window.open(`tel:${phoneNumber}`)}
             >
               <Phone className="w-4 h-4 mr-2" />
-              Call Now
+              {phoneDisplayText}
             </Button>
 
             {/* Mobile Menu Toggle */}
@@ -151,10 +183,10 @@ export const Navigation: React.FC<NavigationProps> = ({ className = '' }) => {
                 variant="hero"
                 size="sm"
                 className="w-full sm:hidden flex items-center justify-center"
-                onClick={() => window.open('tel:+16134007589')}
+                onClick={() => window.open(`tel:${phoneNumber}`)}
               >
                 <Phone className="w-4 h-4 mr-2" />
-                Call Now: (613) 400-7589
+                {phoneDisplayText}: {phoneNumber}
               </Button>
             </div>
           </div>
