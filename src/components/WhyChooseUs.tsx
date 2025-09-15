@@ -62,10 +62,6 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ whyChooseUsData }) => 
   };
 
   const data = whyChooseUsData || fallbackData;
-
-  console.log({
-    whyChooseUsData
-  });
   
   // Filter active cards and sort by order
   const activeCards = data.featureCards
