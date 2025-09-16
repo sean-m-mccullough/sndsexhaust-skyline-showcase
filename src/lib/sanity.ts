@@ -51,7 +51,9 @@ export const queries = {
     companyInfo,
     services,
     contactInfo,
-    copyright
+    copyright,
+    additionalInfo,
+    additionalInfoLink
   }`,
   
   navigation: `*[_type == "navigation" && isActive == true][0]{

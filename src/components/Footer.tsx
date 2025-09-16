@@ -12,6 +12,8 @@ interface FooterData {
     email: string;
   };
   copyright: string;
+  additionalInfo: string;
+  additionalInfoLink: string;
 }
 
 interface FooterProps {
@@ -64,6 +66,16 @@ export const Footer: React.FC<FooterProps> = ({ footerData }) => {
         </div>
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
           <p>{footerData?.copyright || '© 2025 S&S Stainless Exhaust. All rights reserved.'}</p>
+          <p className="mt-2">
+            <a
+              href={footerData?.additionalInfoLink || 'https://lionroarproject.com'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-secondary"
+            >
+              {footerData?.additionalInfo || 'Visit our music site: lionroarproject.com'}
+            </a>
+          </p>
         </div>
       </div>
     </footer>
