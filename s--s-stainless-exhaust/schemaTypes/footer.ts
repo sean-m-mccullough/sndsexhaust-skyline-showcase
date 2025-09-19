@@ -58,18 +58,6 @@ export default defineType({
       title: 'Copyright Text',
       type: 'string',
       initialValue: '© 2025 S&S Stainless Exhaust. All rights reserved.'
-    },
-    {
-      name: 'additionalInfo',
-      title: 'Additional Info',
-      type: 'string',
-      initialValue: 'Visit our music site: lionroarproject.com'
-    },
-    {
-      name: 'additionalInfoLink',
-      title: 'Additional Info Link',
-      type: 'url',
-      initialValue: 'https://lionroarproject.com'
     }
   ],
   preview: {

@@ -42,6 +42,15 @@ export default defineType({
       ]
     },
     {
+      name: 'tertiaryButton',
+      title: 'Tertiary Button',
+      type: 'object',
+      fields: [
+        { name: 'text', title: 'Button Text', type: 'string' },
+        { name: 'link', title: 'Link', type: 'string', }
+      ]
+    },
+    {
       name: 'isActive',
       title: 'Active',
       type: 'boolean',

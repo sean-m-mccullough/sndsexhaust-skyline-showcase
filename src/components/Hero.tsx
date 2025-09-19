@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ParallaxSection } from '@/components/ParallaxSection';
-import { ChevronDown, Phone } from 'lucide-react';
+import { ChevronDown, Phone, Link } from 'lucide-react';
 import { urlFor } from '@/lib/sanity';
 
 interface HeroData {
@@ -17,6 +17,10 @@ interface HeroData {
   secondaryButton: {
     text: string;
     action: string;
+  };
+  tertiaryButton: {
+    text: string;
+    link: string;
   };
   isActive: boolean;
 }
@@ -74,14 +78,20 @@ export const Hero: React.FC<HeroProps> = ({
               {heroData?.secondaryButton?.text || 'Schedule Service'}
             </Button>
           </div>
+          <div className="mt-6 flex justify-center">
+            <Button
+              asChild
+              size='lg'
+              variant='hero'
+              className='text-lg'
+            >
+              <a href={`${heroData?.tertiaryButton?.link || 'https://lionroarproject.com/'}`} target="_blank" rel="noopener noreferrer" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-primary">
+                <Link className="mr-2" />
+                {heroData?.tertiaryButton?.text || 'Lion Roar Project'}
+              </a>
+            </Button>
+          </div>
         </div>
-      </div>
-      
-      <div 
-        className="absolute bottom-11 left-1/2 transform -translate-x-1/2 animate-float cursor-pointer"
-        onClick={onScrollToContent}
-      >
-        <ChevronDown className="w-8 h-8 text-white/70 hover:text-white smooth-transition" />
       </div>
     </ParallaxSection>
   );
